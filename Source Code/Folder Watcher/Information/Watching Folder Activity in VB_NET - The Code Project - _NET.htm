@@ -1,0 +1,1320 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0051)http://www.codeproject.com/dotnet/folderwatcher.asp -->
+<HTML><HEAD><TITLE>Watching Folder Activity in VB.NET - The Code Project - .NET</TITLE><!-- START Insight XE-->
+<SCRIPT language=JavaScript> 
+var if_Site_ID = "ipro"; 
+var if_sid="1"; 
+var if_protocol=window.location.protocol; 
+var mep1="&Site="+escape("codeproject.com"); 
+</SCRIPT>
+
+<SCRIPT language=JavaScript 
+src="Watching Folder Activity in VB_NET - The Code Project - _NET_files/ipro_if.js"></SCRIPT>
+<!-- END Insight XE-->
+<META http-equiv=Content-Type content="text/html; charset=iso-8859-1">
+<META content=en-US name=MS.LOCALE>
+<META 
+content="In this article we're going to learn how to implement the FileSystemWatcher class using Microsoft Visual Basic .NET" 
+name=Description>
+<META content=kbArticle name=Search.TopicType>
+<META content="Jayesh Jain" name=Author>
+<META content="13 Nov 2002 14:00:00 GMT" name=Search.PublishDate>
+<META content="13 Nov 2002 14:00:00 GMT" name=Search.RevisedDate><!--<meta name="Search.UserRating"  content="86 %" /> -->
+<META 
+content="Free source code, .NET, Visual C++, MFC, Windows, FileSystemWatcher, file watcher" 
+name=keywords>
+<META 
+content="Article content copyright Jayesh Jain, 2002, everthing else Copyright  CodeProject, 1999-2005, All Rights Reserved." 
+name=Copyright><LINK title="CodeProject Lounge Postings" 
+href="http://www.codeproject.com/webservices/LoungeRSS.aspx" 
+type=application/rss+xml rel=alternate><LINK 
+title="CodeProject Latest articles - All topics" 
+href="http://www.codeproject.com/webservices/articlerss.aspx?cat=1" 
+type=application/rss+xml rel=alternate><LINK 
+title="CodeProject Latest articles - MFC / C++" 
+href="http://www.codeproject.com/webservices/articlerss.aspx?cat=2" 
+type=application/rss+xml rel=alternate><LINK 
+title="CodeProject Latest articles - C#" 
+href="http://www.codeproject.com/webservices/articlerss.aspx?cat=3" 
+type=application/rss+xml rel=alternate><LINK 
+title="CodeProject Latest articles - ASP.NET" 
+href="http://www.codeproject.com/webservices/articlerss.aspx?cat=4" 
+type=application/rss+xml rel=alternate><LINK 
+title="CodeProject Latest articles - .NET" 
+href="http://www.codeproject.com/webservices/articlerss.aspx?cat=5" 
+type=application/rss+xml rel=alternate>
+<META http-equiv=Reply-to content=mailto:webmaster@codeproject.com><LINK 
+href="/favicon.ico" type=image/ico rel=icon><LINK href="/favicon.ico" 
+rel="SHORTCUT ICON"><LINK 
+href="Watching Folder Activity in VB_NET - The Code Project - _NET_files/global.css" 
+type=text/css rel=stylesheet>
+<SCRIPT language=javascript 
+src="Watching Folder Activity in VB_NET - The Code Project - _NET_files/oncopy.js"></SCRIPT>
+
+<META content="MSHTML 6.00.2900.2802" name=GENERATOR></HEAD>
+<BODY oncopy="return copyCode();" text=black vLink=purple aLink=red link=blue 
+bgColor=white leftMargin=3 topMargin=3>
+<TABLE cellSpacing=0 cellPadding=0 width="100%" bgColor=#ff9900 border=0>
+  <TBODY>
+  <TR>
+    <TD width="100%">
+      <TABLE cellSpacing=1 cellPadding=0 width="100%" bgColor=#ff9900 
+        border=0><TBODY>
+        <TR>
+          <TD vAlign=top><A href="http://www.codeproject.com/"><IMG height=72 
+            alt="The Code Project" 
+            src="Watching Folder Activity in VB_NET - The Code Project - _NET_files/logo225x72.gif" 
+            width=225 border=0></A></TD>
+          <TD align=right><SPAN id=AdBanner4>
+            <TABLE cellSpacing=0 cellPadding=0>
+              <TBODY>
+              <TR>
+                <TD><A class=AdLink 
+                  href="http://www.codeproject.com/script/admentor/ads.asp">View 
+                  our advertisers</A></TD>
+                <TD align=right><A class=AdLink 
+                  href="http://www.codeproject.com/info/mediakit">Advertise with 
+                  us</A></TD></TR>
+              <TR>
+                <TD colSpan=2>
+                  <SCRIPT language=javascript>document.write("<a href=\"/script/admentor/admentorredir.asp?id=1481&way=ban\" target=_blank><img src=\"/script/ann/ServeImg.aspx?File=%2Fscript%2Fadmentor%2Fimages%2FRedGate%5FProfiler%5F468x60%2Egif&C=False&id=1481\" alt=\"ANTS Profiler is the simple .NET code profiler for improving performance of your application. Click here to download your free trial.\" border=0 width=468 height=60></a>");</SCRIPT>
+                </TD></TR></TBODY></TABLE></SPAN></TD></TR>
+        <TR>
+          <TD bgColor=#fbedbb colSpan=2>
+            <TABLE cellPadding=3 width="100%" bgColor=#fbedbb border=0>
+              <TBODY>
+              <TR vAlign=top>
+                <TD width="100%"><FONT style="FONT-SIZE: 8pt"><A 
+                  href="http://www.codeproject.com/?cat=1">All Topics</A>, <A 
+                  href="http://www.codeproject.com/?cat=5">.NET</A>, <A 
+                  href="http://www.codeproject.com/?cat=3">C#</A> &gt;&gt; <A 
+                  href="http://www.codeproject.com/dotnet/">.NET</A> &gt;&gt; <A 
+                  href="http://www.codeproject.com/dotnet/#General">General</A></FONT><BR><BR><B><FONT 
+                  style="FONT-SIZE: 16pt" size=4>Watching Folder Activity in 
+                  VB.NET</FONT></B><BR><B>By <A 
+                  href="http://www.codeproject.com/script/profile/whos_who.asp?id=58890">Jayesh 
+                  Jain</A> </B><BR><BR><FONT style="FONT-SIZE: 9pt">In this 
+                  article we're going to learn how to implement the 
+                  FileSystemWatcher class using Microsoft Visual Basic 
+                  .NET&nbsp;</FONT> </TD>
+                <TD vAlign=top align=right>
+                  <TABLE cellSpacing=0 cellPadding=1 width=200 border=0>
+                    <TBODY>
+                    <TR vAlign=top>
+                      <TD>&nbsp;</TD>
+                      <TD class=SmallText>VB.NET<BR>Windows, .NET (.NET 
+                        1.0)<BR>Win32, VS<BR>Dev</TD></TR>
+                    <TR>
+                      <TD>&nbsp;</TD>
+                      <TD class=SmallText noWrap>Posted 14 Nov 2002</TD></TR>
+                    <TR vAlign=top>
+                      <TD><IMG height=16 
+                        src="Watching Folder Activity in VB_NET - The Code Project - _NET_files/hlp.gif" 
+                        width=16></TD>
+                      <TD class=SmallText noWrap><A 
+                        href="http://www.codeproject.com/script/Articles/list_articles.asp?userid=58890">Articles 
+                        by this author</A></TD></TR>
+                    <TR vAlign=top>
+                      <TD></TD>
+                      <TD class=SmallText noWrap><B>47,556</B> 
+                    views</TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></TD></TR>
+        <TR>
+          <TD colSpan=2>
+            <TABLE id=tblSiteToolbar cellSpacing=0 cellPadding=1 width="100%" 
+            border=0>
+              <TBODY>
+              <TR>
+                <FORM name=Search action=/info/search.asp method=post>
+                <TD vAlign=top align=left width="100%">
+                  <TABLE cellSpacing=0 cellPadding=1 border=0>
+                    <TBODY>
+                    <TR vAlign=center>
+                      <TD class=smallText><B><FONT 
+                        color=white>Search:</FONT></B></TD>
+                      <TD class=navbar noWrap><INPUT class=smallText 
+                        maxLength=255 size=18 name=target></TD>
+                      <TD vAlign=top><SELECT class=smallText name=st> 
+                          <OPTION value=kw selected>Articles</OPTION> <OPTION 
+                          value=au>Authors</OPTION></SELECT></TD>
+                      <TD><INPUT class=formButton type=submit value=Go></TD></TR></TBODY></TABLE></TD></FORM>
+                <TD>
+                  <DIV id=MenuPos 
+                  style="WIDTH: 380px; POSITION: relative; HEIGHT: 20px">
+                  <TABLE height=20 cellSpacing=0 cellPadding=2 width=375>
+                    <TBODY>
+                    <TR>
+                      <TD><A class=NavMenuItem 
+                        href="http://www.codeproject.com/info/faq.asp">Help!</A></TD>
+                      <TD><A class=NavMenuItem 
+                        href="http://www.codeproject.com/info/latest.asp">Articles</A></TD>
+                      <TD><A class=NavMenuItem 
+                        href="http://www.codeproject.com/script/comments/forums.asp">Message 
+                        Boards</A></TD>
+                      <TD><A class=NavMenuItem 
+                        href="http://www.codeproject.com/store/">StoreFront</A></TD>
+                      <TD><A class=NavMenuItem 
+                        href="http://www.codeproject.com/lounge.asp">Lounge</A></TD></TR></TBODY></TABLE></DIV></TD></TR></TBODY></TABLE>
+            <SCRIPT type=text/javascript>function Go(){return}</SCRIPT>
+
+            <SCRIPT 
+            src="Watching Folder Activity in VB_NET - The Code Project - _NET_files/cpmenu_var.js" 
+            type=text/javascript></SCRIPT>
+
+            <SCRIPT 
+            src="Watching Folder Activity in VB_NET - The Code Project - _NET_files/menu10_com.js" 
+            type=text/javascript></SCRIPT>
+          </TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE>
+<TABLE cellSpacing=0 cellPadding=1 border=0>
+  <TBODY>
+  <TR vAlign=top>
+    <TD vAlign=top bgColor=#fbedbb rowSpan=2>
+      <TABLE cellSpacing=0 cellPadding=0 border=0>
+        <SCRIPT language=javascript>
+function ErrorHandle() {}
+window.onerror = ErrorHandle;
+
+function OnNLSubmit(option)
+{
+	if (option=="up")
+		document.subForm.action = "/script/profile/modify.asp?ct=%2Fdotnet%2Ffolderwatcher%2Easp";
+	else if (option=="in")
+		document.subForm.action = "/script/profile/process_logon.asp?ct=%2Fdotnet%2Ffolderwatcher%2Easp";
+	document.subForm.submit();
+	return true;
+}
+</SCRIPT>
+
+        <TBODY>
+        <TR>
+          <TD>
+            <TABLE cellSpacing=3 cellPadding=0>
+              <TBODY>
+              <TR vAlign=top>
+                <TD></TD>
+                <TD></TD></TR>
+              <TR vAlign=top>
+                <TD></TD>
+                <TD class=InfoBarHeader>Toolbox</TD></TR>
+              <TR>
+                <TD bgColor=black colSpan=2><IMG height=1 
+                  src="Watching Folder Activity in VB_NET - The Code Project - _NET_files/space.gif" 
+                  width=1></TD></TR>
+              <TR vAlign=top>
+                <TD><IMG height=16 
+                  src="Watching Folder Activity in VB_NET - The Code Project - _NET_files/sitebuild_icon.gif" 
+                  width=16></TD>
+                <TD class=smallText><A 
+                  href="http://www.codeproject.com/script/submit/ReportProblem.asp?GUID=FolderWatcher%2Fdotnet11%2F14%2F2002">Broken 
+                  Article?</A></TD></TR>
+              <TR vAlign=top>
+                <TD></TD>
+                <TD></TD></TR>
+              <TR vAlign=top>
+                <TD><IMG height=16 
+                  src="Watching Folder Activity in VB_NET - The Code Project - _NET_files/support_icon.gif" 
+                  width=16></TD>
+                <TD class=smallText><A 
+                  href="http://www.codeproject.com/store/"><B>VS.NET 2003 from 
+                  $899</B></A></TD></TR>
+              <TR vAlign=top>
+                <TD><IMG height=16 
+                  src="Watching Folder Activity in VB_NET - The Code Project - _NET_files/support_icon.gif" 
+                  width=16></TD>
+                <TD class=smallText><A 
+                  href="http://www.codeproject.com/store/"><B>Ultimate Toolbox 
+                  $499</B></A></TD></TR>
+              <TR vAlign=top>
+                <TD></TD>
+                <TD></TD></TR>
+              <TR vAlign=top>
+                <TD><IMG height=16 
+                  src="Watching Folder Activity in VB_NET - The Code Project - _NET_files/print.gif" 
+                  width=16></TD>
+                <TD class=smallText><A 
+                  href="http://www.codeproject.com/dotnet/folderwatcher.asp?print=true" 
+                  target=_print>Print version</A></TD></TR>
+              <TR vAlign=top>
+                <TD><IMG height=16 
+                  src="Watching Folder Activity in VB_NET - The Code Project - _NET_files/link.gif" 
+                  width=16></TD>
+                <TD class=smallText><A 
+                  href="http://www.codeproject.com/script/profile/add_bookmark.asp?t=0&amp;ct=%2Fdotnet%2Ffolderwatcher%2Easp&amp;guid=FolderWatcher%2Fdotnet11%2F14%2F2002">Bookmark 
+                  this</A></TD></TR></TR>
+              <TR vAlign=top>
+                <TD><IMG height=16 
+                  src="Watching Folder Activity in VB_NET - The Code Project - _NET_files/mail.gif" 
+                  width=16></TD>
+                <TD class=SmallText><A 
+                  href="http://www.codeproject.com/script/recommend/form.asp?guid=FolderWatcher%2Fdotnet11%2F14%2F2002">Send 
+                  to a friend</A></TD></TR>
+              <TR vAlign=top>
+                <TD></TD>
+                <TD></TD></TR>
+              <TR vAlign=top>
+                <TD></TD>
+                <TD class=InfoBarHeader>My Profile</TD></TR>
+              <TR>
+                <TD bgColor=black colSpan=2><IMG height=1 
+                  src="Watching Folder Activity in VB_NET - The Code Project - _NET_files/space.gif" 
+                  width=1></TD></TR>
+              <TR vAlign=top>
+                <TD><IMG height=16 
+                  src="Watching Folder Activity in VB_NET - The Code Project - _NET_files/profile_small.gif" 
+                  width=16></TD>
+                <TD class=smallText><A 
+                  href="http://www.codeproject.com/script/profile/modify.asp?ct=/dotnet/folderwatcher.asp">My 
+                  Settings</A></TD></TR>
+              <TR vAlign=top>
+                <TD><IMG height=16 
+                  src="Watching Folder Activity in VB_NET - The Code Project - _NET_files/submit_small.gif" 
+                  width=16></TD>
+                <TD class=smallText><A 
+                  href="http://www.codeproject.com/script/articles/list_articles.asp?userid=550573">My 
+                  Articles</A></TD></TR>
+              <TR vAlign=top>
+                <TD><IMG height=16 
+                  src="Watching Folder Activity in VB_NET - The Code Project - _NET_files/bookmarks.gif" 
+                  width=16></TD>
+                <TD class=smallText><A 
+                  href="http://www.codeproject.com/script/profile/bookmark_list.asp">My 
+                  Bookmarks</A></TD></TR>
+              <TR vAlign=top>
+                <TD><IMG height=16 
+                  src="Watching Folder Activity in VB_NET - The Code Project - _NET_files/logoff_small.gif" 
+                  width=16></TD>
+                <TD class=smallText><A 
+                  href="http://www.codeproject.com/script/profile/logoff.asp?ct=/dotnet/folderwatcher.asp">Sign 
+                  out</A></TD></TR>
+              <TR>
+                <TD bgColor=black colSpan=2><IMG height=1 
+                  src="Watching Folder Activity in VB_NET - The Code Project - _NET_files/space.gif" 
+                  width=1></TD></TR></TBODY></TABLE></TD></TR>
+        <TR>
+          <TD>&nbsp;</TD></TR>
+        <TR>
+          <TD>
+            <CENTER>
+            <SCRIPT language=javascript>document.write("<a href=\"/script/admentor/admentorredir.asp?id=1420&way=ban\" target=_blank><img src=\"/script/ann/ServeImg.aspx?File=%2Fscript%2Fadmentor%2Fimages%2FUMcCann%5F120x600%5Fhelp%5FStudy%2Egif&C=False&id=1420\" alt=\"\" border=0 width=120 height=600></a>");</SCRIPT>
+            <BR></CENTER><BR></TD></TR></TBODY></TABLE></TD>
+    <TD width=5 rowSpan=2><IMG height=1 
+      src="Watching Folder Activity in VB_NET - The Code Project - _NET_files/space.gif" 
+      width=5> </TD>
+    <TD align=right width="100%" bgColor=white>
+      <TABLE width="100%">
+        <TBODY>
+        <TR vAlign=top>
+          <TD class=smallText vAlign=top noWrap></TD>
+          <TD noWrap align=right><A name=__top></A>
+            <TABLE>
+              <TBODY>
+              <TR>
+                <TD class=smallText align=right>11 members have rated this 
+                  article. Result:</TD>
+                <TD>
+                  <TABLE cellSpacing=0 cellPadding=0 border=2>
+                    <TBODY>
+                    <TR>
+                      <TD><IMG height=5 
+                        src="Watching Folder Activity in VB_NET - The Code Project - _NET_files/red.gif" 
+                        width=20 border=0></TD>
+                      <TD><IMG height=5 
+                        src="Watching Folder Activity in VB_NET - The Code Project - _NET_files/red.gif" 
+                        width=20 border=0></TD>
+                      <TD><IMG height=5 
+                        src="Watching Folder Activity in VB_NET - The Code Project - _NET_files/red.gif" 
+                        width=20 border=0></TD>
+                      <TD><IMG height=5 
+                        src="Watching Folder Activity in VB_NET - The Code Project - _NET_files/red.gif" 
+                        width=15 border=0><IMG height=5 
+                        src="Watching Folder Activity in VB_NET - The Code Project - _NET_files/white.gif" 
+                        width=5 border=0></TD>
+                      <TD><IMG height=5 
+                        src="Watching Folder Activity in VB_NET - The Code Project - _NET_files/white.gif" 
+                        width=20 border=0></TD></TR></TBODY></TABLE></TD></TR>
+              <TR>
+                <TD class=smallText align=right colSpan=2><A 
+                  title="Calculated as rating x Log10(# votes)" 
+                  href="http://www.codeproject.com/script/articles/top_articles.asp?st=2">Popularity: 
+                  3.89</A>. Rating: <B>3.74</B> out of 
+        5.</TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></TD></TR>
+  <TR>
+    <TD vAlign=top width="100%">
+      <DIV id=contentdiv><!-- Article Starts -->
+      <H2>Introduction</H2>
+      <P>Ever wanted to write an application which constantly monitors a folder 
+      and raises events when there is any activity in that folder? In the good 
+      old days using VB6 or older you had to use the windows APIs to do 
+      something like this which was not very simple and required lots of 
+      coding.</P>
+      <P>The Microsoft .NET Framework has introduced classes like 
+      <CODE>System.IO</CODE> and <CODE>System.Diagnostics</CODE>, which contains 
+      the <CODE>FileSystemWatcher </CODE>class which can raises events when a 
+      file is created/renamed/updated or deleted from the specified folder or 
+      any other activities.</P>
+      <P>In this article we're going to learn how to implement the 
+      <CODE>FileSystemWatcher</CODE> class using Microsoft Visual Basic .NET. 
+      You will need the .NET framework installed, as well as Visual Studio .NET 
+      if you want to experiment with the source code presented in this 
+      article.</P>
+      <H2><B>Getting Started</B> </H2>
+      <P>Open Visual Studio .NET and create a new Windows Application Project. 
+      Call it WatchFolder and click OK:</P>
+      <P><IMG height=280 
+      src="Watching Folder Activity in VB_NET - The Code Project - _NET_files/watchfolder1.gif" 
+      width=400></P>
+      <P>Create a user interface as shown in the image below. Add the following 
+      controls:</P>
+      <P><IMG height=207 
+      src="Watching Folder Activity in VB_NET - The Code Project - _NET_files/watchfolder2.gif" 
+      width=400></P><PRE lang=vbnet>txt_watchpath           <SPAN class=vb-comment>'      TextBox  (for folder path)</SPAN>
+btn_startwatch          <SPAN class=vb-comment>'      Button   (start watching)</SPAN>
+btn_stop                <SPAN class=vb-comment>'      Button   (stop watching)</SPAN>
+txt_folderactivity      <SPAN class=vb-comment>'      Textbox  (folder activity)</SPAN></PRE>Lets 
+      start coding for this application, first thing we need to do is to import 
+      the required classes, type the following code before your class 
+      declaration <PRE lang=vbnet><SPAN class=vb-keyword>Imports</SPAN> System.IO
+<SPAN class=vb-keyword>Imports</SPAN> System.Diagnostics</PRE>This shall 
+      import the necessary class required for our application we also need to 
+      declare a public variable for our FileSystemWatcher class <PRE lang=vbnet><SPAN class=vb-keyword>Public</SPAN> watchfolder <SPAN class=vb-keyword>As</SPAN> FileSystemWatcher</PRE>Also 
+      add the following code to the btn_start_click procedure. <PRE lang=vbnet>watchfolder = <SPAN class=vb-keyword>New</SPAN> System.IO.FileSystemWatcher()
+
+<SPAN class=vb-comment>'this is the path we want to monitor</SPAN>
+ watchfolder.Path = txt_watchpath.Text
+
+<SPAN class=vb-comment>'Add a list of Filter we want to specify</SPAN>
+<SPAN class=vb-comment>'make sure you use OR for each Filter as we need to</SPAN>
+<SPAN class=vb-comment>'all of those </SPAN>
+
+watchfolder.NotifyFilter = IO.NotifyFilters.DirectoryName
+watchfolder.NotifyFilter = watchfolder.NotifyFilter <SPAN class=vb-keyword>Or</SPAN> _
+                           IO.NotifyFilters.FileName
+watchfolder.NotifyFilter = watchfolder.NotifyFilter <SPAN class=vb-keyword>Or</SPAN> _ 
+                           IO.NotifyFilters.Attributes
+
+<SPAN class=vb-comment>' add the handler to each event</SPAN>
+<SPAN class=vb-keyword>AddHandler</SPAN> watchfolder.Changed, <SPAN class=vb-keyword>AddressOf</SPAN> logchange
+<SPAN class=vb-keyword>AddHandler</SPAN> watchfolder.Created, <SPAN class=vb-keyword>AddressOf</SPAN> logchange
+<SPAN class=vb-keyword>AddHandler</SPAN> watchfolder.Deleted, <SPAN class=vb-keyword>AddressOf</SPAN> logchange
+
+<SPAN class=vb-comment>' add the rename handler as the signature is different</SPAN>
+<SPAN class=vb-keyword>AddHandler</SPAN> watchfolder.Renamed, <SPAN class=vb-keyword>AddressOf</SPAN> logrename
+
+<SPAN class=vb-comment>'Set this property to true to start watching</SPAN>
+watchfolder.EnableRaisingEvents = <SPAN class=vb-keyword>True</SPAN>
+
+btn_startwatch.Enabled = <SPAN class=vb-keyword>False</SPAN> 
+btn_stop.Enabled = <SPAN class=vb-keyword>True</SPAN>
+
+<SPAN class=vb-comment>'End of code for btn_start_click</SPAN></PRE>The 
+      <CODE>NotifyFilter </CODE>property is used to specify the type of changes 
+      you want to watch. You can combine the notify filters to watch for one or 
+      more than one type of changes, eg. set the <CODE>NotifyFilter 
+      </CODE>property to Size if you want to monitor the changes in the 
+      file/folder size. Below are the list of notify filters <PRE lang=vbnet>Attributes       <SPAN class=vb-comment>' (The attributes of the file or folder)</SPAN>
+CreationTime     <SPAN class=vb-comment>' (The time the file or folder was created)</SPAN>
+DirectoryName    <SPAN class=vb-comment>' (The name of the directory)</SPAN>
+FileName         <SPAN class=vb-comment>' (The name of the file)</SPAN>
+LastAccess       <SPAN class=vb-comment>' (The date the file or folder was last opened)</SPAN>
+LastWrite        <SPAN class=vb-comment>' (The date the file or folder last had anything written to it)</SPAN>
+Security         <SPAN class=vb-comment>' (The security settings of the file or folder)</SPAN>
+Size             <SPAN class=vb-comment>' (The size of the file or folder)</SPAN></PRE>The 
+      default is the bitwise OR combination of <CODE>LastWrite</CODE>, 
+      <CODE>FileName</CODE>, and <CODE>DirectoryName</CODE>. 
+      <P>The <CODE>FileSystemWatcher </CODE>class raises five events, which are 
+      Created, Changed, Deleted, Renamed and Error, but because Created, 
+      Changed, and Deleted events share the same event signature we can write 
+      just one event handler and we shall write one event handler for Renamed, 
+      because their event signatures are different.</P>
+      <P>Let's type code for handling the Created, Changed, and Deleted events 
+      raised by the <CODE>FileSystemWatcher </CODE>class. (Please note you will 
+      have to type the event declaration, as this procedure is not generated 
+      automatically)</P><PRE lang=vbnet><SPAN class=vb-keyword>Private</SPAN> <SPAN class=vb-keyword>Sub</SPAN> logchange(<SPAN class=vb-keyword>ByVal</SPAN> source <SPAN class=vb-keyword>As</SPAN> <SPAN class=vb-keyword>Object</SPAN>, <SPAN class=vb-keyword>ByVal</SPAN> e <SPAN class=vb-keyword>As</SPAN> _
+                        System.IO.FileSystemEventArgs)
+ <SPAN class=vb-keyword>If</SPAN> e.ChangeType = IO.WatcherChangeTypes.Changed <SPAN class=vb-keyword>Then</SPAN>
+     txt_folderactivity.Text &amp;= <SPAN class=vb-string>"File "</SPAN> &amp; e.FullPath &amp; _
+                             <SPAN class=vb-string>" has been modified"</SPAN> &amp; vbCrLf
+ <SPAN class=vb-keyword>End</SPAN> <SPAN class=vb-keyword>If</SPAN>
+ <SPAN class=vb-keyword>If</SPAN> e.ChangeType = IO.WatcherChangeTypes.Created <SPAN class=vb-keyword>Then</SPAN>
+     txt_folderactivity.Text &amp;= <SPAN class=vb-string>"File "</SPAN> &amp; e.FullPath &amp; _
+                              <SPAN class=vb-string>" has been created"</SPAN> &amp; vbCrLf
+ <SPAN class=vb-keyword>End</SPAN> <SPAN class=vb-keyword>If</SPAN>
+ <SPAN class=vb-keyword>If</SPAN> e.ChangeType = IO.WatcherChangeTypes.Deleted <SPAN class=vb-keyword>Then</SPAN>
+     txt_folderactivity.Text &amp;= <SPAN class=vb-string>"File "</SPAN> &amp; e.FullPath &amp; _
+                             <SPAN class=vb-string>" has been deleted"</SPAN> &amp; vbCrLf
+ <SPAN class=vb-keyword>End</SPAN> <SPAN class=vb-keyword>If</SPAN>
+<SPAN class=vb-keyword>End</SPAN> <SPAN class=vb-keyword>Sub</SPAN>
+</PRE>This is the code for handling the Renamed event raised by the 
+      <CODE>FileSystemWatcher</CODE> class. <PRE lang=vbnet><SPAN class=vb-keyword>Public</SPAN> <SPAN class=vb-keyword>Sub</SPAN> logrename(<SPAN class=vb-keyword>ByVal</SPAN> source <SPAN class=vb-keyword>As</SPAN> <SPAN class=vb-keyword>Object</SPAN>, <SPAN class=vb-keyword>ByVal</SPAN> e <SPAN class=vb-keyword>As</SPAN> _
+                            System.IO.RenamedEventArgs)
+   txt_folderactivity.Text &amp;= <SPAN class=vb-string>"File"</SPAN> &amp; e.OldName &amp; _
+                 <SPAN class=vb-string>" has been renamed to "</SPAN> &amp; e.Name &amp; vbCrLf
+<SPAN class=vb-keyword>End</SPAN> <SPAN class=vb-keyword>Sub</SPAN></PRE>And 
+      lastly this is the code for the btn_stop_click, which shall stop the 
+      monitor. <PRE lang=vbnet><SPAN class=vb-comment>' Stop watching the folder</SPAN>
+watchfolder.EnableRaisingEvents = <SPAN class=vb-keyword>False</SPAN>
+btn_startwatch.Enabled = <SPAN class=vb-keyword>True</SPAN>
+btn_stop.Enabled = <SPAN class=vb-keyword>False</SPAN></PRE>
+      <H2><B>Finally</B> </H2>
+      <P>Now it's the time to run the application and see it in action, please 
+      build and run the application, type the folder you want to monitor in the 
+      text box and click start watching to start watching that folder.</P>
+      <P>In the folder you specified, create a file, rename it, update it and 
+      delete it to see our application recording those changes.</P>
+      <P><IMG height=208 
+      src="Watching Folder Activity in VB_NET - The Code Project - _NET_files/watchfolder3.gif" 
+      width=400></P>
+      <H2><B>More Information</B> </H2>
+      <P>Use <CODE>FileSystemWatcher.Filter</CODE> Property to determine what 
+      files should be monitored, eg setting filter property to "*.txt" shall 
+      monitor all the files with extension txt, the default is *.* which means 
+      all the files with extension, if you want to monitor all the files with 
+      and without extension please set the Filter property to "". 
+      <BR><CODE>FileSystemWatcher</CODE> can be used watch files on a local 
+      computer, a network drive, or a remote computer but it does not raise 
+      events for CD. It only works on Windows 2000 and Windows NT 4.0, common 
+      file system operations might raise more than one event. For example, when 
+      a file is edited or moved, more than one event might be raised. Likewise, 
+      some anti virus or other monitoring applications can cause additional 
+      events.</P>
+      <P>The <CODE>FileSystemWatcher </CODE>will not watch the specified folder 
+      until the path property has been set and <CODE>EnableRaisingEvents</CODE> 
+      is set to true. Set the <CODE>FileSystemWatcher.IncludeSubdirectories 
+      </CODE>Property to true if you want to monitor subdirectories; otherwise, 
+      false. The default is false. <BR><CODE>FileSystemWatcher.Path</CODE> 
+      property supports Universal Naming Convention (UNC) paths. If the folder, 
+      which the path points is renamed the <CODE>FileSystemWatcher</CODE> 
+      reattaches itself to the new renamed folder.</P>
+      <H2><B>Conclusion</B></H2>
+      <P>Hopefully this article has shown you how simple it is to incorporate 
+      the FileSystemWatcher class in your application. Here are few things that 
+      you could do with FileSystemWatcher class</P>
+      <UL>
+        <LI>Import a file the moment it is copied/uploaded to a particular 
+        folder 
+        <LI>Recreate a file if the file is deleted or do something else. 
+        <LI>Notify all the applications depending upon a file the moment the 
+        file is renamed, deleted or updated. </LI></UL><!-- Article Ends --></DIV>
+      <H2>About Jayesh Jain</H2>
+      <TABLE width="100%" border=0>
+        <TBODY>
+        <TR vAlign=top>
+          <TD class=smallText noWrap><BR></TD>
+          <TD class=smallText width="100%">Jayesh Jain is working as a 
+            consultant in Auckland, New Zealand. He has several years of n-Tier 
+            development experience and is currently working with <BR>Visual 
+            Basic.NET to develop interactive client solutions. He has a passion 
+            for Web development and in the spare time he likes to write 
+            articles. Contact him at: jainjayesh74@yahoo.com
+            <P class=smallText>Click <A 
+            href="http://www.codeproject.com/script/profile/whos_who.asp?vt=arts&amp;id=58890">here</A> 
+            to view Jayesh Jain's online profile.</P></TD></TR></TBODY></TABLE><BR>
+      <TABLE cellPadding=4 width="100%" border=0>
+        <TBODY>
+        <TR vAlign=top>
+          <TD width="100%">
+            <H2>Other popular articles:</H2>
+            <UL>
+              <LI><A 
+              href="http://www.codeproject.com/dotnet/regextutorial.asp">The 30 
+              Minute Regex Tutorial</A><BR><SPAN class=smalltext>Learn how to 
+              use regular expressions in 30 minutes with Expresso.</SPAN>
+              <LI><A 
+              href="http://www.codeproject.com/useritems/BuildCOMServersInDotNet.asp">Building 
+              COM Servers in .NET</A><BR><SPAN class=smalltext>Learn the 
+              fundamental principles of building COM DLL and EXE Servers using a 
+              .NET language.</SPAN>
+              <LI><A 
+              href="http://www.codeproject.com/dotnet/ExtremeFloatingPoint1.asp">Floating 
+              Point in .NET part 1: Concepts and Formats</A><BR><SPAN 
+              class=smalltext>Introducing the basic concepts of floating-point 
+              arithmetic: number formats, accuracy and precision, and round-off 
+              error. Includes a discussion of the .NET floating-point 
+              types.</SPAN>
+              <LI><A 
+              href="http://www.codeproject.com/dotnet/expresso.asp">Expresso - A 
+              Tool for Building and Testing Regular Expressions</A><BR><SPAN 
+              class=smalltext>For learning, building, and debugging .NET 
+              Framework regular expressions</SPAN></LI></UL></TD>
+          <TD width=360>
+            <SCRIPT language=javascript>document.write("<IFRAME src=\"/script/ann/ServeHTML.aspx?C=False&id=786\" border=0 frameborder=0 scrolling=no width=300 height=250></IFRAME>");</SCRIPT>
+          </TD></TR></TBODY></TABLE>
+      <FORM action=/script/rating/code/app/insert_vote.asp method=post><INPUT 
+      type=hidden value=FolderWatcher/dotnet11/14/2002 name=vote_name> <INPUT 
+      type=hidden value=/dotnet/folderwatcher.asp name=goal> 
+      <TABLE cellSpacing=0 cellPadding=1 width="100%" bgColor=#ff9900 
+        border=0><TBODY>
+        <TR>
+          <TD width="100%">
+            <TABLE cellSpacing=0 cellPadding=4 width="100%" bgColor=#fbedbb 
+            border=0>
+              <TBODY>
+              <TR>
+                <TD class=smalltext vAlign=center>[<A 
+                  href="http://www.codeproject.com/dotnet/folderwatcher.asp#__top">Top</A>]</TD>
+                <TD vAlign=center noWrap align=right><I><B>Rate this Article 
+                  for us!</B></I>&nbsp;&nbsp;&nbsp;&nbsp; <I>Poor</I><INPUT 
+                  type=radio value=1 name=rate><INPUT type=radio value=2 
+                  name=rate><INPUT type=radio value=3 name=rate><INPUT 
+                  type=radio value=4 name=rate><INPUT type=radio value=5 
+                  name=rate><I>Excellent</I>&nbsp;&nbsp;<INPUT class=FormButton type=submit value=Vote> 
+                </TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></FORM>
+      <TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+        <TBODY>
+        <TR vAlign=top>
+          <TD vAlign=top>
+            <CENTER>
+            <SCRIPT language=javascript>document.write("<a href=\"/script/admentor/admentorredir.asp?id=1298&way=ban\" target=_blank><img src=\"/script/ann/ServeImg.aspx?File=%2Fscript%2Fadmentor%2Fimages%2Futb%5F120x60%2Egif&C=False&id=1298\" alt=\"Hundreds of MFC extension classes to enhance the usability and User Interfaces of MFC applications\" border=0 width=120 height=60></a>");</SCRIPT>
+            </CENTER><BR></TD>
+          <TD vAlign=top noWrap align=middle><SPAN id=AdBanner5>
+            <SCRIPT language=javascript>document.write("<a href=\"/script/admentor/admentorredir.asp?id=1480&way=ban\" target=_blank><img src=\"/script/ann/ServeImg.aspx?File=%2Fscript%2Fadmentor%2Fimages%2FXoreax%5F468x60%5Fred%2Egif&C=False&id=1480\" alt=\"Xoreax cuts VS build times by up to 90%\" border=0 width=468 height=60></a>");</SCRIPT>
+            </SPAN></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE><A 
+name=__comments></A>
+<SCRIPT language=JavaScript>
+
+function MsgCategoryForm(UserID, MsgID, MsgType)
+{
+	document.write("Rate this message: ");
+	document.write("<a href='#xx" + MsgID.toString() + "xx' onclick='CatMsg(" + UserID.toString() + ", " + MsgID.toString() + ", " + MsgVoteGood.toString() + ")'>Good " + MsgType + "</a> ");
+	document.write("<a href='#xx" + MsgID.toString() + "xx' onclick='CatMsg(" + UserID.toString() + ", " + MsgID.toString() + ", " + MsgVoteBad.toString() + ")'>Bad " + MsgType + "</a> ");
+	document.write("<a href='#xx" + MsgID.toString() + "xx' onclick='CatMsg(" + UserID.toString() + ", " + MsgID.toString() + ", " + MsgVoteWrong.toString() + ")'>Innapropriate / Offtopic</a> ");
+	document.write("<a href='#xx" + MsgID.toString() + "xx' onclick='CatMsg(" + UserID.toString() + ", " + MsgID.toString() + ", " + MsgVoteOffensive.toString() + ")'>Offensive</a> ");
+}
+function CatMsg(userid, msgid, Category) 
+{ 
+	open("/script/comments/vote.asp?js=1&user="+userid.toString()+"&msg="+msgid.toString()+"&score="+Category.toString() ,"helpful","toolbar=no,resizable=yes,scrollbars=yes,directories=no,menubar=no,width=300,height=200");
+	return false;
+}
+
+
+function MsgVoteForm(UserID, MsgID)
+{
+	document.write("<span id=\"MVF" + MsgID + "\">");
+	document.write("Rate this message: ");
+	for (var i=1; i<=5;i++)
+		document.write("<a href='#xx" + MsgID.toString() + "xx' title='give this message a vote of " + i.toString() + "' onclick='return RateMsg(" + UserID.toString() + ", " + MsgID.toString() + ", " + i.toString() + ")'><b>" + i.toString() + "</b></a> ");
+	document.write(" (out of 5)");
+	document.writeln("</span>");
+}
+
+
+// bit is wrapped in a <span> or something with the id of "vote99999" where 99999 is the message ID
+function RateMsg(userid, msgid, score)
+{
+
+   var req = new ActiveXObject("Msxml2.XMLHTTP"); 
+
+   req.onreadystatechange = function()
+   {
+      if ( req.readyState == 4 )
+      {
+         if ( req.status == 200 )
+         {
+            if ( req.responseText.match(/You have already voted/) )
+               status.innerHTML = "<b style='color:red'>Sorry, can't vote twice... <img src='/script/images/smiley_wink.gif'></b>";
+            else
+               status.innerHTML = "<b>Voted: " + score + "</b>";
+         }
+         else
+         {
+            status.innerHTML = "<b style='color:red'>Failed!" + req.statusText + "</b>";
+         }
+      }
+   }
+   
+   var status = document.getElementById("MVF" + msgid);
+   if (!status)
+      return;  // should never happen...   
+   status.innerHTML = "<b style='color:green'>Voting...</b>";
+   
+   var strAction = "/script/comments/vote.asp?js=1&user="+userid+"&msg="+msgid+"&score="+score;
+   req.open("GET", strAction, true);
+   req.send(null);
+   return false;
+}
+
+</SCRIPT>
+
+<SCRIPT language=JavaScript>
+
+var Selected = "";
+var AdTime = new Date();
+
+function SwitchMessage(elm)
+{
+	
+	var elmref;
+	if (Selected != "")
+	{
+		elmref = eval("document.getElementById('" + Selected + "_h1')");
+		if (elmref) elmref.style.display = 'none';
+		elmref = eval("document.getElementById('" + Selected + "_h0')");
+		if (elmref) elmref.bgColor = '#FEF9E7';
+	}
+	if (Selected != elm.name) 
+	{
+		Selected = elm.name;
+		elmref = eval("document.getElementById('" + Selected + "_h1')");
+		if (elmref) 
+		{
+			if (elmref.style.display=='none') elmref.style.display='';
+			else elmref.style.display = 'none';
+		}
+		elmref = eval("document.getElementById('" + Selected + "_h0')");
+		if (elmref) 
+			elmref.bgColor = '#99CCFF';
+	}
+	else
+		Selected="";
+		
+	window.location = "#xx" + Selected + "xx";
+
+	return false;
+}
+
+
+</SCRIPT>
+
+<SCRIPT language=javascript event=onclick for=DynMessLink>
+return SwitchMessage(this);
+</SCRIPT>
+
+<TABLE cellSpacing=0 cellPadding=0 width="100%" bgColor=#ff9900 border=0>
+  <TBODY>
+  <TR>
+    <TD width="100%">
+      <TABLE id=ForumTable cellSpacing=1 cellPadding=0 width="100%" 
+      bgColor=#ff9900 border=0>
+        <FORM 
+        action=/script/comments/app/do_filtermessages.asp?main=/dotnet/folderwatcher.asp&amp;df=100&amp;forumid=13503 
+        method=post>
+        <TBODY>
+        <TR>
+          <TD>
+            <TABLE cellSpacing=0 cellPadding=3 width="100%" bgColor=white 
+            border=0>
+              <TBODY>
+              <TR bgColor=#fbedbb>
+                <TD class=smalltext noWrap><A 
+                  href="http://www.codeproject.com/script/comments/faq.asp"><IMG 
+                  height=16 
+                  src="Watching Folder Activity in VB_NET - The Code Project - _NET_files/forum_faq.gif" 
+                  width=16 align=absMiddle border=0> <B>FAQ</B></A>&nbsp;</TD>
+                <TD class=smalltext vAlign=top noWrap align=right>Noise 
+                  tolerance <SELECT class=smalltext size=1 name=noise><OPTION 
+                    value=1>Very High</OPTION> <OPTION value=2>High</OPTION> 
+                    <OPTION value=3 selected>Medium</OPTION> <OPTION 
+                    value=4>Low</OPTION> <OPTION value=5>Very 
+                  low</OPTION></SELECT>&nbsp;&nbsp;</TD>
+                <TD class=smalltext vAlign=center noWrap align=right 
+                  colSpan=2><A 
+                  href="http://www.codeproject.com/script/comments/search_comments.asp?forumid=13503"><IMG 
+                  height=15 
+                  src="Watching Folder Activity in VB_NET - The Code Project - _NET_files/forum_search.gif" 
+                  width=16 border=0> Search comments</A> &nbsp;</TD>
+                <TD vAlign=top align=right><INPUT class=FormButton type=submit value="Set Options" name=submit></TD></TR>
+              <TR bgColor=#ff9900>
+                <TD width="100%">&nbsp;</TD>
+                <TD class=smalltext vAlign=top noWrap align=right>View <SELECT 
+                  class=smalltext size=1 name=expand><OPTION value=0>Normal 
+                    (slow)</OPTION> <OPTION value=2>Preview (slow)</OPTION> 
+                    <OPTION value=5 selected>Message View</OPTION> <OPTION 
+                    value=6>Topic View</OPTION> <OPTION value=1>Thread 
+                    View</OPTION> <OPTION value=3>Expanded (Supporters 
+                    only)</OPTION></SELECT>&nbsp;&nbsp;</TD>
+                <TD class=smalltext vAlign=top noWrap>Per page <SELECT 
+                  class=smalltext size=1 name=perpage><OPTION 
+                    value=10>10</OPTION> <OPTION value=25 selected>25</OPTION> 
+                    <OPTION value=50>50</OPTION></SELECT></TD>
+                <TD colSpan=2>&nbsp;</TD></TR></TBODY></TABLE></TD></TR></FORM>
+        <TR bgColor=#fbedbb>
+          <TD><A name=xx0xx></A>
+            <TABLE cellPadding=2 width="100%" bgColor=#fbedbb border=0>
+              <TBODY>
+              <TR>
+                <TD class=messagetitle><IMG height=16 
+                  src="Watching Folder Activity in VB_NET - The Code Project - _NET_files/forum_newmsg.gif" 
+                  width=16 align=top border=0><A class=HoverLink 
+                  title="Add a new message to the discussions" 
+                  href="http://www.codeproject.com/script/comments/user_new.asp?main=/dotnet/folderwatcher.asp&amp;df=100&amp;forumid=13503" 
+                  target=_top name=HoverNL><B>New Message</B></A></TD>
+                <TD class=messagetitle>Msgs 1 to 7 of 7 (Total: 7) (<A 
+                  href="http://www.codeproject.com/dotnet/folderwatcher.asp?df=100&amp;forumid=13503">Refresh</A>)</TD>
+                <TD noWrap align=right><FONT class=messagetitle><SPAN 
+                  class=HoverLink>First</SPAN> <SPAN class=HoverLink>Prev</SPAN> 
+                  <SPAN class=HoverLink>Next</SPAN> <SPAN 
+                  class=HoverLink>&nbsp;&nbsp;&nbsp;&nbsp;</SPAN> 
+              </FONT></TD></TR></TBODY></TABLE></TD></TR>
+        <TR bgColor=white>
+          <TD>
+            <TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+              <TBODY>
+              <TR>
+                <TD width="100%">
+                  <TABLE cellSpacing=0 cellPadding=2 bgColor=#fbedbb border=0>
+                    <TBODY>
+                    <TR>
+                      <TD class=messagetitle width="100%">Subject&nbsp;</TD>
+                      <TD class=messagetitle noWrap width=140>Author&nbsp;</TD>
+                      <TD style="WIDTH: 9em" noWrap align=right 
+                        width=120><FONT 
+                    class=messagetitle>Date&nbsp;</FONT></TD></TR></TBODY></TABLE></TD></TR>
+              <TR>
+                <TD><IMG height=5 
+                  src="Watching Folder Activity in VB_NET - The Code Project - _NET_files/t.gif" 
+                  width=1 border=0></TD></TR>
+              <TR id=1332813_h0 bgColor=#fef9e7>
+                <TD width="100%">
+                  <TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+                    <TBODY>
+                    <TR>
+                      <TD bgColor=white><A name=xx1332813xx></A><IMG 
+                        src="Watching Folder Activity in VB_NET - The Code Project - _NET_files/news_general.gif" 
+                        align=absMiddle>&nbsp;</TD>
+                      <TD class=messagetitle width="100%"><A 
+                        class=messagetitle id=DynMessLink 
+                        href="http://www.codeproject.com/dotnet/folderwatcher.asp?df=100&amp;forumid=13503&amp;select=1332813#xx1332813xx" 
+                        name=1332813><B>Size</B></A></TD>
+                      <TD vAlign=bottom><A 
+                        href="http://www.codeproject.com/script/profile/whos_who.asp?id=2582877"><IMG 
+                        title="Click for User Profile" height=15 
+                        src="Watching Folder Activity in VB_NET - The Code Project - _NET_files/userinfo.gif" 
+                        width=14 border=0></A>&nbsp;</TD>
+                      <TD noWrap width=140><FONT 
+                        class=messagetitle><B>FunkyMonkey(The Real 
+                        One)</B>&nbsp;</FONT></TD>
+                      <TD style="WIDTH: 9em" noWrap align=right 
+                        width=120><FONT class=messagetitle><B>3:54 12 Jan 
+                        '06</B>&nbsp;</FONT></TD></TR></TBODY></TABLE></TD></TR>
+              <TR id=1332813_h1 style="DISPLAY: none">
+                <TD width="100%">
+                  <TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+                    <TBODY>
+                    <TR>
+                      <TD><IMG 
+                        src="Watching Folder Activity in VB_NET - The Code Project - _NET_files/news_blank.gif" 
+                        align=absMiddle>&nbsp;</TD>
+                      <TD width="100%" bgColor=#d5eaff>
+                        <TABLE cellSpacing=5 cellPadding=0 width="100%" 
+border=0>
+                          <TBODY>
+                          <TR>
+                            <TD>
+                              <TABLE cellSpacing=0 cellPadding=0 width="100%" 
+                              border=0>
+                                <TBODY>
+                                <TR>
+                                <TD colSpan=2><FONT class=messagecontent>Added 
+                                IO.NotifyFilters.Size<BR><BR>How do I now show 
+                                the old file size and then the new file size in 
+                                txt_folderactivity. for the file 
+                                changed.<BR><BR><IMG 
+                                src="Watching Folder Activity in VB_NET - The Code Project - _NET_files/smiley_confused.gif" 
+                                align=absMiddle> <BR>&nbsp;</FONT></TD></TR>
+                                <TR vAlign=top>
+                                <TD class=messagetitle>[<A 
+                                title="Reply to this current thread" 
+                                href="http://www.codeproject.com/script/comments/user_reply.asp?main=/dotnet/folderwatcher.asp&amp;df=100&amp;forumid=13503&amp;select=1332813">Reply</A>][<A 
+                                title="Email a reply to the author of this message" 
+                                href="http://www.codeproject.com/script/comments/user_mail.asp?main=/dotnet/folderwatcher.asp&amp;df=100&amp;forumid=13503&amp;select=1332813">Email</A>][<A 
+                                title="View only messages within this thread" 
+                                href="http://www.codeproject.com/dotnet/folderwatcher.asp?df=100&amp;tid=1332813&amp;forumid=13503&amp;select=1332813#xx1332813xx">View 
+                                Thread</A>][<A 
+                                title="Get the URL for this message" 
+                                href="http://www.codeproject.com/dotnet/folderwatcher.asp?msg=1332813#xx1332813xx">Get 
+                                Link</A>]</TD>
+                                <TD class=messagetitle align=right>
+                                <SCRIPT language=Javascript>MsgVoteForm(2582877,1332813);</SCRIPT>
+                                </TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></TD></TR>
+              <TR>
+                <TD><IMG height=5 
+                  src="Watching Folder Activity in VB_NET - The Code Project - _NET_files/t.gif" 
+                  width=1 border=0></TD></TR>
+              <TR height=1>
+                <TD bgColor=#ff9900><IMG height=1 
+                  src="Watching Folder Activity in VB_NET - The Code Project - _NET_files/t.gif" 
+                  width=1></TD></TR>
+              <TR id=1238455_h0 bgColor=#fef9e7>
+                <TD width="100%">
+                  <TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+                    <TBODY>
+                    <TR>
+                      <TD bgColor=white><A name=xx1238455xx></A><IMG 
+                        src="Watching Folder Activity in VB_NET - The Code Project - _NET_files/news_general.gif" 
+                        align=absMiddle>&nbsp;</TD>
+                      <TD class=messagetitle width="100%"><A 
+                        class=messagetitle id=DynMessLink 
+                        href="http://www.codeproject.com/dotnet/folderwatcher.asp?df=100&amp;forumid=13503&amp;select=1238455#xx1238455xx" 
+                        name=1238455><B>Demo Project for VB.Net 2003</B></A></TD>
+                      <TD vAlign=bottom><A 
+                        href="http://www.codeproject.com/script/profile/whos_who.asp?id=2310858"><IMG 
+                        title="Click for User Profile" height=15 
+                        src="Watching Folder Activity in VB_NET - The Code Project - _NET_files/userinfo.gif" 
+                        width=14 border=0></A>&nbsp;</TD>
+                      <TD noWrap width=140><FONT 
+                        class=messagetitle><B>AXELDE</B>&nbsp;</FONT></TD>
+                      <TD style="WIDTH: 9em" noWrap align=right 
+                        width=120><FONT class=messagetitle><B>14:46 27 Sep 
+                        '05</B>&nbsp;</FONT></TD></TR></TBODY></TABLE></TD></TR>
+              <TR id=1238455_h1 style="DISPLAY: none">
+                <TD width="100%">
+                  <TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+                    <TBODY>
+                    <TR>
+                      <TD><IMG 
+                        src="Watching Folder Activity in VB_NET - The Code Project - _NET_files/news_blank.gif" 
+                        align=absMiddle>&nbsp;</TD>
+                      <TD width="100%" bgColor=#d5eaff>
+                        <TABLE cellSpacing=5 cellPadding=0 width="100%" 
+border=0>
+                          <TBODY>
+                          <TR>
+                            <TD>
+                              <TABLE cellSpacing=0 cellPadding=0 width="100%" 
+                              border=0>
+                                <TBODY>
+                                <TR>
+                                <TD colSpan=2><FONT 
+                                class=messagecontent>Hi,<BR><BR>can someone 
+                                create demo project for Visual Studio .Net 
+                                2003?<BR>I wanna learn simple programing and I 
+                                need some samples.<BR><BR>Many thanks<BR>Axel 
+                                <BR>&nbsp;</FONT></TD></TR>
+                                <TR vAlign=top>
+                                <TD class=messagetitle>[<A 
+                                title="Reply to this current thread" 
+                                href="http://www.codeproject.com/script/comments/user_reply.asp?main=/dotnet/folderwatcher.asp&amp;df=100&amp;forumid=13503&amp;select=1238455">Reply</A>][<A 
+                                title="Email a reply to the author of this message" 
+                                href="http://www.codeproject.com/script/comments/user_mail.asp?main=/dotnet/folderwatcher.asp&amp;df=100&amp;forumid=13503&amp;select=1238455">Email</A>][<A 
+                                title="View only messages within this thread" 
+                                href="http://www.codeproject.com/dotnet/folderwatcher.asp?df=100&amp;tid=1238455&amp;forumid=13503&amp;select=1238455#xx1238455xx">View 
+                                Thread</A>][<A 
+                                title="Get the URL for this message" 
+                                href="http://www.codeproject.com/dotnet/folderwatcher.asp?msg=1238455#xx1238455xx">Get 
+                                Link</A>]</TD>
+                                <TD class=messagetitle align=right>
+                                <SCRIPT language=Javascript>MsgVoteForm(2310858,1238455);</SCRIPT>
+                                </TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></TD></TR>
+              <TR>
+                <TD><IMG height=5 
+                  src="Watching Folder Activity in VB_NET - The Code Project - _NET_files/t.gif" 
+                  width=1 border=0></TD></TR>
+              <TR height=1>
+                <TD bgColor=#ff9900><IMG height=1 
+                  src="Watching Folder Activity in VB_NET - The Code Project - _NET_files/t.gif" 
+                  width=1></TD></TR>
+              <TR id=1047243_h0 bgColor=#fef9e7>
+                <TD width="100%">
+                  <TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+                    <TBODY>
+                    <TR>
+                      <TD bgColor=white><A name=xx1047243xx></A><IMG 
+                        src="Watching Folder Activity in VB_NET - The Code Project - _NET_files/news_general.gif" 
+                        align=absMiddle>&nbsp;</TD>
+                      <TD class=messagetitle width="100%"><A 
+                        class=messagetitle id=DynMessLink 
+                        href="http://www.codeproject.com/dotnet/folderwatcher.asp?df=100&amp;forumid=13503&amp;select=1047243#xx1047243xx" 
+                        name=1047243><B>Get the Dir &amp; File List from 
+                        FTP</B></A></TD>
+                      <TD vAlign=bottom><A 
+                        href="http://www.codeproject.com/script/profile/whos_who.asp?id=1146150"><IMG 
+                        title="Click for User Profile" height=15 
+                        src="Watching Folder Activity in VB_NET - The Code Project - _NET_files/userinfo.gif" 
+                        width=14 border=0></A>&nbsp;</TD>
+                      <TD noWrap width=140><FONT 
+                        class=messagetitle><B>sendownload</B>&nbsp;</FONT></TD>
+                      <TD style="WIDTH: 9em" noWrap align=right 
+                        width=120><FONT class=messagetitle><B>6:27 25 Feb 
+                        '05</B>&nbsp;</FONT></TD></TR></TBODY></TABLE></TD></TR>
+              <TR id=1047243_h1 style="DISPLAY: none">
+                <TD width="100%">
+                  <TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+                    <TBODY>
+                    <TR>
+                      <TD><IMG 
+                        src="Watching Folder Activity in VB_NET - The Code Project - _NET_files/news_blank.gif" 
+                        align=absMiddle>&nbsp;</TD>
+                      <TD width="100%" bgColor=#d5eaff>
+                        <TABLE cellSpacing=5 cellPadding=0 width="100%" 
+border=0>
+                          <TBODY>
+                          <TR>
+                            <TD>
+                              <TABLE cellSpacing=0 cellPadding=0 width="100%" 
+                              border=0>
+                                <TBODY>
+                                <TR>
+                                <TD colSpan=2><FONT class=messagecontent>How to 
+                                Get the Directory and Files name in FTP Site 
+                                using<BR>VB.NET 
+                                <BR><BR>Susen<BR>&nbsp;</FONT></TD></TR>
+                                <TR vAlign=top>
+                                <TD class=messagetitle>[<A 
+                                title="Reply to this current thread" 
+                                href="http://www.codeproject.com/script/comments/user_reply.asp?main=/dotnet/folderwatcher.asp&amp;df=100&amp;forumid=13503&amp;select=1047243">Reply</A>][<A 
+                                title="Email a reply to the author of this message" 
+                                href="http://www.codeproject.com/script/comments/user_mail.asp?main=/dotnet/folderwatcher.asp&amp;df=100&amp;forumid=13503&amp;select=1047243">Email</A>][<A 
+                                title="View only messages within this thread" 
+                                href="http://www.codeproject.com/dotnet/folderwatcher.asp?df=100&amp;tid=1047243&amp;forumid=13503&amp;select=1047243#xx1047243xx">View 
+                                Thread</A>][<A 
+                                title="Get the URL for this message" 
+                                href="http://www.codeproject.com/dotnet/folderwatcher.asp?msg=1047243#xx1047243xx">Get 
+                                Link</A>]</TD>
+                                <TD class=messagetitle align=right>Score: 3.0 (2 
+                                votes).
+                                <SCRIPT language=Javascript>MsgVoteForm(1146150,1047243);</SCRIPT>
+                                 
+                    </TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></TD></TR>
+              <TR>
+                <TD><IMG height=5 
+                  src="Watching Folder Activity in VB_NET - The Code Project - _NET_files/t.gif" 
+                  width=1 border=0></TD></TR>
+              <TR height=1>
+                <TD bgColor=#ff9900><IMG height=1 
+                  src="Watching Folder Activity in VB_NET - The Code Project - _NET_files/t.gif" 
+                  width=1></TD></TR>
+              <TR id=943221_h0 bgColor=#fef9e7>
+                <TD width="100%">
+                  <TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+                    <TBODY>
+                    <TR>
+                      <TD bgColor=white><A name=xx943221xx></A><IMG 
+                        src="Watching Folder Activity in VB_NET - The Code Project - _NET_files/news_general.gif" 
+                        align=absMiddle>&nbsp;</TD>
+                      <TD class=messagetitle width="100%"><A 
+                        class=messagetitle id=DynMessLink 
+                        href="http://www.codeproject.com/dotnet/folderwatcher.asp?df=100&amp;forumid=13503&amp;select=943221#xx943221xx" 
+                        name=943221><B>Monitor an FTP site</B></A></TD>
+                      <TD vAlign=bottom><A 
+                        href="http://www.codeproject.com/script/profile/whos_who.asp?id=1302461"><IMG 
+                        title="Click for User Profile" height=15 
+                        src="Watching Folder Activity in VB_NET - The Code Project - _NET_files/userinfo.gif" 
+                        width=14 border=0></A>&nbsp;</TD>
+                      <TD noWrap width=140><FONT class=messagetitle><B>Fahad 
+                        sarwar</B>&nbsp;</FONT></TD>
+                      <TD style="WIDTH: 9em" noWrap align=right 
+                        width=120><FONT class=messagetitle><B>7:27 8 Oct 
+                        '04</B>&nbsp;</FONT></TD></TR></TBODY></TABLE></TD></TR>
+              <TR id=943221_h1 style="DISPLAY: none">
+                <TD width="100%">
+                  <TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+                    <TBODY>
+                    <TR>
+                      <TD><IMG 
+                        src="Watching Folder Activity in VB_NET - The Code Project - _NET_files/news_blank.gif" 
+                        align=absMiddle>&nbsp;</TD>
+                      <TD width="100%" bgColor=#d5eaff>
+                        <TABLE cellSpacing=5 cellPadding=0 width="100%" 
+border=0>
+                          <TBODY>
+                          <TR>
+                            <TD>
+                              <TABLE cellSpacing=0 cellPadding=0 width="100%" 
+                              border=0>
+                                <TBODY>
+                                <TR>
+                                <TD colSpan=2><FONT class=messagecontent>How 
+                                would i get the FileSystemWatcher to monitor an 
+                                FTP site?!?! the MSDN Class description details 
+                                it can watch local, network or remote computers, 
+                                so how would u setup the filesystemwatcher to 
+                                monitor an FTP site<BR><BR>is it as simple 
+                                as<BR><BR>watcher.path = 
+                                "ftp://123.123.1.12/myDocuments" 
+                                <BR>&nbsp;</FONT></TD></TR>
+                                <TR vAlign=top>
+                                <TD class=messagetitle>[<A 
+                                title="Reply to this current thread" 
+                                href="http://www.codeproject.com/script/comments/user_reply.asp?main=/dotnet/folderwatcher.asp&amp;df=100&amp;forumid=13503&amp;select=943221">Reply</A>][<A 
+                                title="Email a reply to the author of this message" 
+                                href="http://www.codeproject.com/script/comments/user_mail.asp?main=/dotnet/folderwatcher.asp&amp;df=100&amp;forumid=13503&amp;select=943221">Email</A>][<A 
+                                title="View only messages within this thread" 
+                                href="http://www.codeproject.com/dotnet/folderwatcher.asp?df=100&amp;tid=943221&amp;forumid=13503&amp;select=943221#xx943221xx">View 
+                                Thread</A>][<A 
+                                title="Get the URL for this message" 
+                                href="http://www.codeproject.com/dotnet/folderwatcher.asp?msg=943221#xx943221xx">Get 
+                                Link</A>]</TD>
+                                <TD class=messagetitle align=right>
+                                <SCRIPT language=Javascript>MsgVoteForm(1302461,943221);</SCRIPT>
+                                </TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></TD></TR>
+              <TR>
+                <TD><IMG height=5 
+                  src="Watching Folder Activity in VB_NET - The Code Project - _NET_files/t.gif" 
+                  width=1 border=0></TD></TR>
+              <TR height=1>
+                <TD bgColor=#ff9900><IMG height=1 
+                  src="Watching Folder Activity in VB_NET - The Code Project - _NET_files/t.gif" 
+                  width=1></TD></TR>
+              <TR id=715288_h0 bgColor=#fef9e7>
+                <TD width="100%">
+                  <TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+                    <TBODY>
+                    <TR>
+                      <TD bgColor=white><A name=xx715288xx></A><IMG 
+                        src="Watching Folder Activity in VB_NET - The Code Project - _NET_files/news_general.gif" 
+                        align=absMiddle>&nbsp;</TD>
+                      <TD class=messagetitle width="100%"><A 
+                        class=messagetitle id=DynMessLink 
+                        href="http://www.codeproject.com/dotnet/folderwatcher.asp?df=100&amp;forumid=13503&amp;select=715288#xx715288xx" 
+                        name=715288><B>File multi detect</B></A></TD>
+                      <TD vAlign=bottom><A 
+                        href="http://www.codeproject.com/script/profile/whos_who.asp?id=101572"><IMG 
+                        title="Click for User Profile" height=15 
+                        src="Watching Folder Activity in VB_NET - The Code Project - _NET_files/userinfo.gif" 
+                        width=14 border=0></A>&nbsp;</TD>
+                      <TD noWrap width=140><FONT 
+                        class=messagetitle><B>mlaboria</B>&nbsp;</FONT></TD>
+                      <TD style="WIDTH: 9em" noWrap align=right 
+                        width=120><FONT class=messagetitle><B>11:24 16 Jan 
+                        '04</B>&nbsp;</FONT></TD></TR></TBODY></TABLE></TD></TR>
+              <TR id=715288_h1 style="DISPLAY: none">
+                <TD width="100%">
+                  <TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+                    <TBODY>
+                    <TR>
+                      <TD><IMG 
+                        src="Watching Folder Activity in VB_NET - The Code Project - _NET_files/news_blank.gif" 
+                        align=absMiddle>&nbsp;</TD>
+                      <TD width="100%" bgColor=#d5eaff>
+                        <TABLE cellSpacing=5 cellPadding=0 width="100%" 
+border=0>
+                          <TBODY>
+                          <TR>
+                            <TD>
+                              <TABLE cellSpacing=0 cellPadding=0 width="100%" 
+                              border=0>
+                                <TBODY>
+                                <TR>
+                                <TD colSpan=2><FONT class=messagecontent>I have 
+                                a problem, any times this function detect more 
+                                than one time, the creation of a new 
+                                file.<BR><BR>How can I detect and prevend that? 
+                                <BR>&nbsp;</FONT></TD></TR>
+                                <TR vAlign=top>
+                                <TD class=messagetitle>[<A 
+                                title="Reply to this current thread" 
+                                href="http://www.codeproject.com/script/comments/user_reply.asp?main=/dotnet/folderwatcher.asp&amp;df=100&amp;forumid=13503&amp;select=715288">Reply</A>][<A 
+                                title="Email a reply to the author of this message" 
+                                href="http://www.codeproject.com/script/comments/user_mail.asp?main=/dotnet/folderwatcher.asp&amp;df=100&amp;forumid=13503&amp;select=715288">Email</A>][<A 
+                                title="View only messages within this thread" 
+                                href="http://www.codeproject.com/dotnet/folderwatcher.asp?df=100&amp;tid=715288&amp;forumid=13503&amp;select=715288#xx715288xx">View 
+                                Thread</A>][<A 
+                                title="Get the URL for this message" 
+                                href="http://www.codeproject.com/dotnet/folderwatcher.asp?msg=715288#xx715288xx">Get 
+                                Link</A>]</TD>
+                                <TD class=messagetitle align=right>
+                                <SCRIPT language=Javascript>MsgVoteForm(101572,715288);</SCRIPT>
+                                </TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></TD></TR>
+              <TR>
+                <TD><IMG height=6 
+                  src="Watching Folder Activity in VB_NET - The Code Project - _NET_files/t.gif" 
+                  width=1 border=0></TD></TR>
+              <TR id=1055127_h0 bgColor=#fef9e7>
+                <TD width="100%">
+                  <TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+                    <TBODY>
+                    <TR>
+                      <TD bgColor=white><A name=xx1055127xx></A><IMG height=1 
+                        src="Watching Folder Activity in VB_NET - The Code Project - _NET_files/ind.gif" 
+                        width=18><IMG 
+                        src="Watching Folder Activity in VB_NET - The Code Project - _NET_files/news_general.gif" 
+                        align=absMiddle>&nbsp;</TD>
+                      <TD class=messagetitle width="100%"><A 
+                        class=messagetitle id=DynMessLink 
+                        href="http://www.codeproject.com/dotnet/folderwatcher.asp?df=100&amp;forumid=13503&amp;select=1055127#xx1055127xx" 
+                        name=1055127>Re: File multi detect</A></TD>
+                      <TD vAlign=bottom><A 
+                        href="http://www.codeproject.com/script/profile/whos_who.asp?id=1594458"><IMG 
+                        title="Click for User Profile" height=15 
+                        src="Watching Folder Activity in VB_NET - The Code Project - _NET_files/userinfo.gif" 
+                        width=14 border=0></A>&nbsp;</TD>
+                      <TD noWrap width=140><FONT 
+                        class=messagetitle>Rothariger&nbsp;</FONT></TD>
+                      <TD style="WIDTH: 9em" noWrap align=right 
+                        width=120><FONT class=messagetitle>10:33 8 Mar 
+                        '05&nbsp;</FONT></TD></TR></TBODY></TABLE></TD></TR>
+              <TR id=1055127_h1 style="DISPLAY: none">
+                <TD width="100%">
+                  <TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+                    <TBODY>
+                    <TR>
+                      <TD><IMG height=1 
+                        src="Watching Folder Activity in VB_NET - The Code Project - _NET_files/ind.gif" 
+                        width=18><IMG 
+                        src="Watching Folder Activity in VB_NET - The Code Project - _NET_files/news_blank.gif" 
+                        align=absMiddle>&nbsp;</TD>
+                      <TD width="100%" bgColor=#d5eaff>
+                        <TABLE cellSpacing=5 cellPadding=0 width="100%" 
+border=0>
+                          <TBODY>
+                          <TR>
+                            <TD>
+                              <TABLE cellSpacing=0 cellPadding=0 width="100%" 
+                              border=0>
+                                <TBODY>
+                                <TR>
+                                <TD colSpan=2><FONT class=messagecontent>ive 
+                                resolve this changing this 
+                                <BR><BR>watchfolder.NotifyFilter = 
+                                IO.NotifyFilters.DirectoryName<BR>watchfolder.NotifyFilter 
+                                = watchfolder.NotifyFilter Or 
+                                _<BR>IO.NotifyFilters.FileName<BR>watchfolder.NotifyFilter 
+                                = watchfolder.NotifyFilter Or _ 
+                                <BR>IO.NotifyFilters.Attributes<BR><BR>to 
+                                this<BR><BR>watchfolder.NotifyFilter = 
+                                IO.NotifyFilters.DirectoryName Or 
+                                IO.NotifyFilters.FileName Or 
+                                IO.NotifyFilters.Attributes<BR><BR><BR>salutes... 
+                                <BR>&nbsp;</FONT></TD></TR>
+                                <TR vAlign=top>
+                                <TD class=messagetitle>[<A 
+                                title="Reply to this current thread" 
+                                href="http://www.codeproject.com/script/comments/user_reply.asp?main=/dotnet/folderwatcher.asp&amp;df=100&amp;forumid=13503&amp;select=1055127">Reply</A>][<A 
+                                title="Email a reply to the author of this message" 
+                                href="http://www.codeproject.com/script/comments/user_mail.asp?main=/dotnet/folderwatcher.asp&amp;df=100&amp;forumid=13503&amp;select=1055127">Email</A>][<A 
+                                title="View only messages within this thread" 
+                                href="http://www.codeproject.com/dotnet/folderwatcher.asp?df=100&amp;tid=715288&amp;forumid=13503&amp;select=1055127#xx1055127xx">View 
+                                Thread</A>][<A 
+                                title="Get the URL for this message" 
+                                href="http://www.codeproject.com/dotnet/folderwatcher.asp?msg=1055127#xx1055127xx">Get 
+                                Link</A>]</TD>
+                                <TD class=messagetitle align=right>Score: 3.5 (2 
+                                votes).
+                                <SCRIPT language=Javascript>MsgVoteForm(1594458,1055127);</SCRIPT>
+                                 
+                    </TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></TD></TR>
+              <TR>
+                <TD><IMG height=5 
+                  src="Watching Folder Activity in VB_NET - The Code Project - _NET_files/t.gif" 
+                  width=1 border=0></TD></TR>
+              <TR height=1>
+                <TD bgColor=#ff9900><IMG height=1 
+                  src="Watching Folder Activity in VB_NET - The Code Project - _NET_files/t.gif" 
+                  width=1></TD></TR>
+              <TR id=354054_h0 bgColor=#fef9e7>
+                <TD width="100%">
+                  <TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+                    <TBODY>
+                    <TR>
+                      <TD bgColor=white><A name=xx354054xx></A><IMG 
+                        src="Watching Folder Activity in VB_NET - The Code Project - _NET_files/news_general.gif" 
+                        align=absMiddle>&nbsp;</TD>
+                      <TD class=messagetitle width="100%"><A 
+                        class=messagetitle id=DynMessLink 
+                        href="http://www.codeproject.com/dotnet/folderwatcher.asp?df=100&amp;forumid=13503&amp;select=354054#xx354054xx" 
+                        name=354054><B>Finding out what users accessed 
+                        files</B></A></TD>
+                      <TD vAlign=bottom><IMG height=13 
+                        alt="Unconfirmed/Anonymous posting" 
+                        src="Watching Folder Activity in VB_NET - The Code Project - _NET_files/usersuss.gif" 
+                        width=15></A>&nbsp;</TD>
+                      <TD noWrap width=140><FONT class=messagetitle><B>Dan 
+                        Smith</B>&nbsp;</FONT></TD>
+                      <TD style="WIDTH: 9em" noWrap align=right 
+                        width=120><FONT class=messagetitle><B>12:16 3 Dec 
+                        '02</B>&nbsp;</FONT></TD></TR></TBODY></TABLE></TD></TR>
+              <TR id=354054_h1 style="DISPLAY: none">
+                <TD width="100%">
+                  <TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+                    <TBODY>
+                    <TR>
+                      <TD><IMG 
+                        src="Watching Folder Activity in VB_NET - The Code Project - _NET_files/news_blank.gif" 
+                        align=absMiddle>&nbsp;</TD>
+                      <TD width="100%" bgColor=#d5eaff>
+                        <TABLE cellSpacing=5 cellPadding=0 width="100%" 
+border=0>
+                          <TBODY>
+                          <TR>
+                            <TD>
+                              <TABLE cellSpacing=0 cellPadding=0 width="100%" 
+                              border=0>
+                                <TBODY>
+                                <TR>
+                                <TD colSpan=2><FONT class=messagecontent>Is 
+                                there a way to find out what users are accessing 
+                                files over the network? I'd like to get their 
+                                username, their machine name, 
+                                etc<BR><BR>&nbsp;</FONT></TD></TR>
+                                <TR vAlign=top>
+                                <TD class=messagetitle>[<A 
+                                title="Reply to this current thread" 
+                                href="http://www.codeproject.com/script/comments/user_reply.asp?main=/dotnet/folderwatcher.asp&amp;df=100&amp;forumid=13503&amp;select=354054">Reply</A>][<A 
+                                title="Email a reply to the author of this message" 
+                                href="http://www.codeproject.com/script/comments/user_mail.asp?main=/dotnet/folderwatcher.asp&amp;df=100&amp;forumid=13503&amp;select=354054">Email</A>][<A 
+                                title="View only messages within this thread" 
+                                href="http://www.codeproject.com/dotnet/folderwatcher.asp?df=100&amp;tid=354054&amp;forumid=13503&amp;select=354054#xx354054xx">View 
+                                Thread</A>][<A 
+                                title="Get the URL for this message" 
+                                href="http://www.codeproject.com/dotnet/folderwatcher.asp?msg=354054#xx354054xx">Get 
+                                Link</A>]</TD>
+                                <TD class=messagetitle align=right>[<A 
+                                href="http://www.codeproject.com/script/comments/owner_modify_pw.asp?main=/dotnet/folderwatcher.asp&amp;df=100&amp;forumid=13503&amp;select=354054"><I>Modify</I></A>|<A 
+                                href="http://www.codeproject.com/script/comments/owner_delete_pw.asp?main=/dotnet/folderwatcher.asp&amp;df=100&amp;forumid=13503&amp;select=354054"><I>Delete</I></A>]<BR>Score: 
+                                2.0 (1 vote).
+                                <SCRIPT language=Javascript>MsgVoteForm(0,354054);</SCRIPT>
+                                 
+                    </TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></TD></TR>
+              <TR>
+                <TD><IMG height=5 
+                  src="Watching Folder Activity in VB_NET - The Code Project - _NET_files/t.gif" 
+                  width=1 border=0></TD></TR></TBODY></TABLE></TD></TR>
+        <TR bgColor=#fbedbb>
+          <TD>
+            <TABLE cellPadding=2 width="100%">
+              <TBODY>
+              <TR>
+                <TD class=messagetitle>Last Visit: 7:44 Monday 16th January, 
+                  2006</TD>
+                <TD noWrap align=right><FONT class=messagetitle><SPAN 
+                  class=HoverLink>First</SPAN> <SPAN class=HoverLink>Prev</SPAN> 
+                  <SPAN class=HoverLink>Next</SPAN> <SPAN 
+                  class=HoverLink>&nbsp;&nbsp;&nbsp;&nbsp;</SPAN> 
+              </FONT></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE>
+<P class=smallText><IMG 
+src="Watching Folder Activity in VB_NET - The Code Project - _NET_files/news_general.gif" 
+align=absMiddle> General comment &nbsp;&nbsp; <IMG 
+src="Watching Folder Activity in VB_NET - The Code Project - _NET_files/news_info.gif" 
+align=absMiddle> News / Info &nbsp;&nbsp; <IMG 
+src="Watching Folder Activity in VB_NET - The Code Project - _NET_files/news_question.gif" 
+align=absMiddle> Question &nbsp;&nbsp; <IMG 
+src="Watching Folder Activity in VB_NET - The Code Project - _NET_files/news_answer.gif" 
+align=absMiddle> Answer &nbsp;&nbsp; <IMG 
+src="Watching Folder Activity in VB_NET - The Code Project - _NET_files/news_game.gif" 
+align=absMiddle> Joke / Game &nbsp;&nbsp; <IMG 
+src="Watching Folder Activity in VB_NET - The Code Project - _NET_files/news_sticky.gif" 
+align=absMiddle> Admin message</P><BR>
+<TABLE cellSpacing=5 width="100%">
+  <TBODY>
+  <TR vAlign=top>
+    <TD><FONT style="FONT-SIZE: 7pt" size=1><A 
+      href="http://www.codeproject.com/?cat=1">All Topics</A>, <A 
+      href="http://www.codeproject.com/?cat=5">.NET</A>, <A 
+      href="http://www.codeproject.com/?cat=3">C#</A> &gt;&gt; <A 
+      href="http://www.codeproject.com/dotnet/">.NET</A> &gt;&gt; <A 
+      href="http://www.codeproject.com/dotnet/#General">General</A> <BR>Updated: 
+      14 Nov 2002 </FONT></TD>
+    <TD align=right><FONT style="FONT-SIZE: 7pt" size=1>Article content 
+      copyright Jayesh Jain, 2002<BR>everything else Copyright  <A 
+      href="mailto:webmaster@codeproject.com">CodeProject</A>, 1999-2005</A>. 
+      <BR>Web14 | <A href="http://www.codeproject.com/info/MediaKit">Advertise 
+      on The Code Project</A> | <A 
+      href="http://www.codeproject.com/info/privacy.asp">Privacy</A> 
+  </FONT></TD></TR></TBODY></TABLE><BR>
+<CENTER>
+<TABLE cellSpacing=0 cellPadding=0 width="95%" border=0>
+  <TBODY>
+  <TR>
+    <TD bgColor=#ff9900 height=1><IMG height=1 
+      src="Watching Folder Activity in VB_NET - The Code Project - _NET_files/space.gif"></TD></TR>
+  <TR>
+    <TD align=middle><FONT size=1><A 
+      href="http://www.theultimatetoolbox.com/">The Ultimate Toolbox</A>  <A 
+      href="http://www.codeproject.com/redir.asp?id=235">MSDN Communities</A> | 
+      <A href="http://www.aspalliance.com/">ASP Alliance</A>  <A 
+      href="http://www.developerfusion.co.uk/">Developer Fusion</A>  <A 
+      href="http://www.developersdex.com/">Developersdex</A>  <A 
+      href="http://www.devguru.com/">DevGuru</A>  <A 
+      href="http://www.programmersheaven.com/">Programmers Heaven</A>  <A 
+      href="http://www.planet-source-code.com/">Planet Source Code</A>  <A 
+      href="http://www.tek-tips.com/">Tek-Tips Forums</A>  
+</FONT></TD></TR></TBODY></TABLE></CENTER></BODY></HTML>
